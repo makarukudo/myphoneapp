@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.css" />
+        <title>Test App</title>
+    </head>
+    <body>
+        <div data-role="page" data-theme="b">
+            <div data-role="header" data-fullscreen="true">
+                <h1>My Phone App</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <form>
+                    <input id="filter-for-listview" data-type="search" placeholder="Type to search...">
+                </form>
+                <ul data-role="listview" data-inset="true" data-filter="true" data-input="#filter-for-listview">
+                    <li><a href="#">Acura</a></li>
+                    <li><a href="#">Audi</a></li>
+                    <li><a href="#">BMW</a></li>
+                    <li><a href="#">Cadillac</a></li>
+                    <li><a href="#">Ferrari</a></li>
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#" data-icon="grid">Summary</a></li>
+                        <li><a href="#" data-icon="star" class="ui-btn-active">Favs</a></li>
+                        <li><a href="#" data-icon="gear">Setup</a></li>                                                                   
+                    </ul>                    
+                </div>
+            </div>
+        </div>
+        <div data-role="page">
+            
+        </div>
+        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>               
+        <script type="text/javascript" src="js/jquery.mobile-1.4.2.js"></script>       
+    </body>
+</html>
