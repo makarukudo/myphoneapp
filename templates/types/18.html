@@ -1,0 +1,51 @@
+<ul class="list padding" ng-controller="PostItemForm">
+    <div ng-show="error.length>5" class="alert assertive-border">{{error}}</div>    
+    <input type="hidden" ng-model="postId" />
+    <li class="item item-divider input-space-normal">Job Description:</li>
+    <li class="item item-input item-stacked-label item-padding">
+        <textarea placeholder="Job Description" ng-model="post.title" ></textarea>
+    </li>
+    <li class="item item-input item-stacked-label">
+        <span class="input-label">Address <small ng-show="post.latitude">{{latlng}}</small></span>
+        <input type="text" placeholder="Address" ng-model="post.address" ng-blur="getLatLng(post.address)"/>
+    </li>
+    <li class="item item-input item-stacked-label">
+        <span class="input-label">Select a start date</span>
+        <input type="date" placeholder="Start Date" ng-model="post.startdate" />
+    </li>
+    <li class="item item-input item-stacked-label">
+        <span class="input-space-normal">Make job available to contractors how far away: <span ng-show="post.radius>0">{{post.radius}} mi</span></span>
+        <div class="range range-positive">
+            <input ng-model="post.radius" type="range" name="volume" min="0" max="10" step=".1" value="50" />
+        </div>
+    </li>
+    <li class="item item-input item-stacked-label">
+        <span class="input-label">Asking Price</span>
+        <input type="text" ng-model="post.price" placeholder="Asked Price"/>
+    </li>
+    <li class="item item-divider">Email request to contractor directly<br />Add contractor from facebook page</li>
+    <li class="item item-checkbox">
+        <label class="checkbox">
+            <input type="checkbox" ng-model="post.conlicense">
+        </label>
+        Licenced Contractor Only
+    </li>    
+    <li class="item item-checkbox">
+        <label class="checkbox">
+            <input type="checkbox" ng-model="post.confeedback">
+        </label>
+        Minimum feedback scores
+    </li>
+    <li class="item item-input item-stacked-label" ng-show="post.confeedback">
+        <span class="input-label">Feedback Score</span>
+        <input type="text" ng-model="post.confeedscore" placeholder="Asked Price"/>
+    </li>    
+    <li class="button-bar">
+        <button class="button button-block button-calm" ng-click="createPost(post)">
+            Create Post
+        </button>
+        <button class="button button-block button-calm" ng-click="postItemModal.hide()">
+            Cancel
+        </button>
+    </li>
+</ul>

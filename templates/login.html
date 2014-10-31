@@ -1,0 +1,22 @@
+<div class="modal" ng-controller="LoginCtrl">
+    <ion-header-bar class="bar bar-header bar-calm">
+        <h1 class="title">Please Log In</h1>
+        <button class="button button-icon icon ion-arrow-shrink button-primary" ng-click="loginModal.hide()"></button>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list" style="background: #fff; padding: 10px">
+            <form ng-submit="logIn(login)">
+                <div ng-show="error.length>5" class="alert assertive-border">{{error}}</div>
+                <label class="item item-input">
+                    <span class="input-label" ng-class="errors.username ? 'assertive' : ''">Email</span>
+                    <input ng-model="login.username" type="text">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label" ng-class="errors.password ? 'assertive' : ''">Password</span>
+                    <input ng-model="login.password" type="password">
+                </label>
+                <button type="submit" class="button button-block button-calm">Log In</button>
+            </form>
+        </div>
+    </ion-content>
+</div>

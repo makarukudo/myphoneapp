@@ -1,0 +1,23 @@
+<div class="modal" ng-controller="ProfileCtrl">
+    <ion-header-bar class="bar bar-header bar-calm">
+            <h1 class="title">Profile</h1>
+            <button class="button button-icon icon ion-arrow-shrink button-primary" ng-click="profileModal.hide()"></button>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list card">
+            <div class="item item-avatar">
+                <img src="http://placehold.it/40x40">
+                <h2>{{account.firstname}} {{account.lastname}}</h2>
+                <p>{{account.last_login | date}}</p>
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#"><i class="icon ion-thumbsup"></i> {{totalFave}} Favorites </a>
+                <a class="tab-item" href="#"><i class="icon ion-chatbox"></i> My Neer </a>
+                <a class="tab-item" href="#"><i class="icon ion-share"></i> Share</a>
+            </div>            
+            <div class="padding">
+                <button class="button button-block button-calm" ng-click="logOut()">Logout</button>     
+            </div>
+        </div>
+    </ion-content>    
+</div>

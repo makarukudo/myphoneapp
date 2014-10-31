@@ -1,0 +1,22 @@
+<ion-view title="Productivity">
+    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input type="search" placeholder="Search" ng-model="search">
+        </label>
+        <button class="button button-clear" ng-click="search=''">Cancel</button>
+    </div>
+    <ion-content>
+        <ion-list>
+            <ion-item class="item-toggle" ng-repeat="category in categories | filter:search | orderBy:'cname'" href="#/social/view/{{category.cid}}">
+                {{category.cname}}
+                <label class="toggle toggle-calm">
+                    <input type="checkbox" ng-model="category.checked" ng-click="setFavorite(category)">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>        
+            </ion-item >
+        </ion-list>                
+    </ion-content>
+</ion-view>

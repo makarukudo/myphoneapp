@@ -1,0 +1,19 @@
+<ion-view title="Neer">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon ion-email" ng-click="showMyNeer()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-icon ion-plus" ng-click="showLoginForm()"></button>
+    </ion-nav-buttons>
+    <div class="bar bar-subheader item-input-inset">
+        <button class="button button-clear icon ion-ios7-navigate" ng-click="centerOnMe()"></button>        
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input type="search" placeholder="Enter address here" ng-model="search" ng-keydown="findAddress(search, $event)">
+        </label>
+        <button class="button button-clear icon ion-ios7-close" ng-click="search=''"></button>
+    </div>
+    <ion-content scroll="false" style="top: 40px; z-index: -5000">
+        <div id="map"></div>
+    </ion-content>
+</ion-view>

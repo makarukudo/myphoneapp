@@ -1,0 +1,45 @@
+<div class="list padding" ng-controller="PostItemForm">
+    <input type="hidden" ng-model="post.id"/>
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">Item Name</span>
+        <input type="text" placeholder="Item Name" ng-model="post.name"/>
+    </label>
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">Location</span>
+        <input type="text" placeholder="Location" ng-model="post.location"/>
+    </label>
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">Asking Price</span>
+        <input type="text" ng-model="post.price" placeholder="Asked Price"/>
+    </label>
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">Willing To Trade For</span>
+        <input type="text" ng-model="post.trade" placeholder="Traded For" >
+    </label>
+    <li class="item item-toggle">
+        Allow buyers to submit bid
+        <label class="toggle toggle-calm">
+            <input type="checkbox" ng-model="post.allow_bid">
+                <div class="track">
+                <div class="handle"></div>
+            </div>
+        </label>
+    </li>
+    <li class="item item-toggle">
+        Specify price I would like
+        <label class="toggle toggle-calm">
+            <input type="checkbox" ng-model="post.set_price">
+                <div class="track">
+                <div class="handle"></div>
+            </div>
+        </label>
+    </li>
+    <div class="button-bar">
+        <button class="button button-block button-calm">
+            Create Event
+        </button>
+        <button class="button button-block button-calm">
+            Cancel
+        </button>
+    </div>
+</div>

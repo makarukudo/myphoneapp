@@ -1,0 +1,78 @@
+<ul class="list padding" ng-controller="PostItemForm">
+    <input type="hidden" ng-model="post.id"/>
+    <li class="item item-input item-stacked-label item-padding">
+        <span class="input-label">Event Description</span>        
+        <textarea placeholder="Event Description" ng-model="post.name" ></textarea>
+    </li>
+    <li class="item item-input item-stacked-label">
+        <span class="input-label">Location</span>
+        <input type="text" placeholder="Location" ng-model="post.location"/>
+    </li>
+    <li class="item item-input item-stacked-label">
+        <span class="input-label">Select a start date</span>
+        <input type="date" placeholder="Date" ng-model="post.startdate" />
+    </li>
+    <li class="item item-divider">Invite People</li>
+    <li class="item item-input item-stacked-label">
+        <div class="range range-positive">
+            <input ng-model="post.radius" type="range" name="volume" min="0" max="10" step=".1" value="50" />
+        </div>
+    </li>
+    <li class="item item-input item-stacked-label">
+        <li class="button-bar">
+            <button class="button button-block button-calm">Contact List</button>
+            <button class="button button-block button-calm">Facebook Friends</button>
+        </li>    
+    </li>    
+    <li class="item item-checkbox">
+        <label class="checkbox"><input type="checkbox" ng-model="post.visible_map"></label>
+        Visible on map
+    </li>     
+    <li class="item item-checkbox">
+        <label class="checkbox"><input type="checkbox" ng-model="post.request_invites"></label>
+        Allow people to request invites
+    </li>     
+    <li class="item item-checkbox">
+        <label class="checkbox"><input type="checkbox" ng-model="post.allow_invites"></label>
+        Allow Attendees to invite more people
+    </li>         
+    <li class="row item">
+        <div class="col col-50 item-stacked-label">
+            <span class="input-label">Location</span>
+            <input type="text" placeholder="Location" ng-model="post.location"/>
+        </div>
+        <div class="col col-50  item-stacked-label">
+            <span class="input-label">Location</span>
+            <input type="text" placeholder="Location" ng-model="post.location"/>
+        </div>
+    </li>
+    <li class="item item-input item-stacked-label">
+        <span class="input-label">Asking Price</span>
+        <input type="text" ng-model="post.price" placeholder="Asked Price"/>
+    </li>
+    <li class="item item-divider">Email request to contractor directly<br />Add contractor from facebook page</li>
+    <li class="item item-checkbox">
+        <label class="checkbox">
+            <input type="checkbox" ng-model="post.licenced_only">
+        </label>
+        Licenced Contractor Only
+    </li>    
+    <li class="item item-checkbox">
+        <label class="checkbox">
+            <input type="checkbox" ng-model="post.feedback">
+        </label>
+        Minimum feedback scores
+    </li>
+    <li class="item item-input item-stacked-label" ng-show="post.feedback">
+        <span class="input-label">Feedback Score</span>
+        <input type="text" ng-model="post.feedback_score" placeholder="Asked Price"/>
+    </li>    
+    <li class="button-bar">
+        <button class="button button-block button-calm">
+            Create Event
+        </button>
+        <button class="button button-block button-calm">
+            Cancel
+        </button>
+    </li>
+</ul>

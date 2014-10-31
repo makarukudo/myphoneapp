@@ -1,0 +1,6 @@
+<div class="text-center">
+    <label ng-repeat="color in colors" class="item-radio item-{{color}}" ng-click="category.color=color">
+        <input type="radio" value="{{color}}" name="clr" ng-model="category.color">
+        <i ng-class="category.color==color ? 'icon-lg ion-ios7-circle-filled {{color}}' : 'icon-lg ion-ios7-circle-outline {{color}}'"></i>
+    </label>
+</div>

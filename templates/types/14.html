@@ -1,0 +1,73 @@
+<ul class="list padding" ng-controller="PostItemForm">
+    <div ng-show="error.length>5" class="alert assertive-border">{{error}}</div>    
+    <input type="hidden" ng-model="postId" />
+    <li class="item item-divider input-space-normal">Job Description: </li>
+    <li class="item item-input item-stacked-label item-padding">
+        <textarea placeholder="Job Description" ng-model="post.title" ></textarea>
+    </li>    
+    <li class="item item-padding item-stacked-label">
+        <span class="input-label">Address: <small ng-show="post.latitude">{{latlng}}</small></span>
+        <input type="text" placeholder="Address" ng-model="post.address" ng-blur="getLatLng(post.address)"/>
+        <small ng-show="address" class="note"><i class="icon ion-checkmark calm"></i> {{address}}</small>
+    </li>
+    <li class="item item-input">
+        <span class="input-label">Start date: </span>
+        <input type="date" placeholder="Start Date" ng-model="post.startdate" />
+    </li>
+    <li class="item item-input">
+        <span class="input-label">Worker(s) needed: </span>
+        <input type="number" placeholder="0" ng-model="post.totalworker" />
+    </li>
+    <li class="item item-input">
+        <span class="input-label">Work duration: </span>
+        <input type="text" placeholder="1 day" ng-model="post.duration" />
+    </li>    
+    <li class="item item-input item-stacked-label">
+        <span class="input-space-normal">Make job available to contractors how far away: <span ng-show="post.radius==0">Unlimited</span><span ng-show="post.radius>0">{{post.radius}} mi</span></span>
+        <div class="range range-positive">
+            <input ng-model="post.radius" type="range" name="volume" min="0" max="100" step=".1" value="0" ng-value="0" />
+        </div>
+    </li>
+    <li class="item item-padding"> 
+        <div class="button-bar">
+            <button class="button button-block button-small button-positive">Email contractor directly</button>
+            <button class="button button-block button-small button-positive">Add from facebook</button>
+        </div>
+        <input type="hidden" ng-model="post.paymode" />
+    </li>    
+    <li class="item item-padding">
+        <ul class="list list-unbox">
+            <li class="item item-checkbox">
+                <label class="checkbox"><input type="checkbox" ng-model="post.conlicense"></label>
+                Licenced laborer only
+            </li>     
+            <li class="item item-checkbox">
+                <label class="checkbox"><input type="checkbox" ng-model="post.confeedback"></label>
+                Minimum feedback scores
+            </li>             
+            <li class="item item-input" ng-show="post.confeedback">
+                <span class="input-label">Feedback Score</span>
+                <input type="text" ng-model="post.confeedscore" placeholder="Score"/>
+            </li>                         
+        </ul>
+    </li>
+    <li class="item item-padding"> 
+        <div class="button-bar">
+            <button class="button button-block button-small" ng-click="changePayMode(1)" ng-class="post.paymode==1 ? 'button-calm' : ''">Specify price</button>
+            <button class="button button-block button-small" ng-click="changePayMode(2)" ng-class="post.paymode==2 ? 'button-calm' : ''">Contractor submit bids</button>
+        </div>
+        <input type="hidden" ng-model="post.paymode" />
+    </li>
+    <li class="item item-input" ng-show="post.paymode==1">
+        <span class="input-label">Price per hour: </span>
+        <input type="number" ng-model="post.price" placeholder="0.00"/>
+    </li>
+    <li class="button-bar">
+        <button class="button button-block button-calm" ng-click="createPost(post)">
+            Create Post
+        </button>
+        <button class="button button-block button-calm" ng-click="postItemModal.hide()">
+            Cancel
+        </button>
+    </li>
+</ul>

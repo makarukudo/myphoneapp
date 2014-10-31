@@ -1,0 +1,9 @@
+<div class="modal">
+    <ion-header-bar class="bar bar-header bar-calm">
+        <h1 class="title">{{postItemCategory}}</h1>
+        <button class="button button-icon icon ion-arrow-shrink button-primary" ng-click="postItemModal.hide()"></button>
+    </ion-header-bar>
+    <ion-content>
+        <div ng-include="postItemTemplate"></div>
+    </ion-content>
+</div>

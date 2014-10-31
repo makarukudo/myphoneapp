@@ -1,0 +1,23 @@
+<div class="modal" ng-controller="PostCtrl">
+    <ion-header-bar class="bar-header bar-calm">
+        <h1 class="title">Select Event Categories</h1>
+        <button class="button button-icon icon ion-arrow-shrink button-primary" ng-click="showListingModal.hide()"></button>
+    </ion-header-bar>
+    <ion-header-bar class="bar-subheader item-input-inset">    
+        <label class="item-input-wrapper">
+            <input type="search" placeholder="Enter address here" ng-model="search" ng-keydown="findAddress(search, $event)">
+        </label>
+        <button class="button button-clear icon ion-ios7-close" ng-click="search=''"></button>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list ng-repeat="group in groups">
+            <ion-item class="item-divider">{{group.gname}}</ion-item>
+            <ion-item ng-repeat="category in group.categories | filter:search | orderBy:'cname'" class="item-checkbox">
+                <label class="checkbox checkbox-{{category.color}}">
+                    <input type="checkbox" ng-model="category.checked" ng-true-value="on" ng-false-value="off" ng-change="addToFavorites(category)" ng-checked="category.color.length > 0 ? true : false">
+                </label>
+                {{category.cname}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</div>

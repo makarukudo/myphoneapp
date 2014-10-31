@@ -1,0 +1,22 @@
+<div class="modal">
+    <ion-header-bar class="bar bar-header bar-calm">
+        <h1 class="title">My Neer</h1>
+        <button class="button button-icon icon ion-arrow-shrink button-primary" ng-click="myNeerModal.hide()"></button>
+    </ion-header-bar>
+    <ion-header-bar class="bar bar-subheader item-input-inset">    
+        <label class="item-input-wrapper">
+            <input type="search" placeholder="Enter address here" ng-model="search" ng-keydown="findAddress(search, $event)">
+        </label>
+        <button class="button button-clear icon ion-ios7-close" ng-click="search=''"></button>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list ng-repeat="group in neers">
+            <ion-item class="item-divider">{{group.name}}</ion-item>
+            <ion-item ng-repeat="post in group.posts| filter:search | orderBy: '-id'" class="item-avatar">
+                <img src="http://placehold.it/40x40">
+                <h2>{{post.title}} <span class="note">in {{post.type.category}}</span></h2>
+                <p ng-show="post.address">{{post.address}} <br />{{post.date.posted_rtime}}</p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</div>

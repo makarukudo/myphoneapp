@@ -1,0 +1,78 @@
+<ul class="list" ng-controller="PostItemForm">
+    <div ng-show="error.length>5" class="alert assertive-border">{{error}}</div>    
+    <input type="hidden" ng-model="postId" />
+    <li class="item item-divider">Job description: </li>
+    <li class="item item-input item-padding">
+        <textarea placeholder="Job Description" ng-model="post.title" ></textarea>
+    </li>    
+    <li class="item item-divider">Address: <small ng-show="post.latitude">{{latlng}}</small></li>
+    <li class="item item-padding">
+        <input type="text" placeholder="Address" ng-model="post.address" ng-blur="getLatLng(post.address)"/>
+        <small ng-show="address" class="note"><i class="icon ion-checkmark calm"></i> {{address}}</small>
+    </li>
+    <li class="item item-divider">Start date: </li>
+    <li class="item item-input">
+        <input type="date" placeholder="Start Date" ng-model="post.startdate" />
+    </li>
+    <li class="item item-divider">Worker(s) needed: </li>    
+    <li class="item item-input">
+        <input type="number" placeholder="0" ng-model="post.totalworker" />
+    </li>
+    <li class="item item-divider">Work duration: </li>        
+    <li class="item item-input">
+        <input type="text" placeholder="1 day" ng-model="post.duration" />
+    </li>    
+    <li class="item item-divider">Make job available to contractors how far away: <span ng-show="post.radius==0">Unlimited</span><span ng-show="post.radius>0">{{post.radius}} mi</span></li>            
+    <li class="item item-input item-stacked-label">
+        <div class="range range-positive">
+            <input ng-model="post.radius" type="range" name="volume" min="0" max="100" step=".1" value="0" ng-value="0" />
+        </div>
+    </li>
+    <li class="item item-divider">Connect with contractors:</li>    
+    <li class="item item-padding"> 
+        <div class="button-bar">
+            <button class="button button-block button-small button-positive">Email contractor directly</button>
+            <button class="button button-block button-small button-positive">Add from facebook</button>
+        </div>
+        <input type="hidden" ng-model="post.paymode" />
+    </li>    
+    <li class="item item-divider">Options:</li>    
+    <li class="item item-padding">
+        <ul class="list list-unbox">
+            <li class="item item-checkbox">
+                <label class="checkbox"><input type="checkbox" ng-model="post.conlicense"></label>
+                Licenced laborer only
+            </li>     
+            <li class="item item-checkbox">
+                <label class="checkbox"><input type="checkbox" ng-model="post.confeedback"></label>
+                Minimum feedback scores
+            </li>             
+            <li class="item item-input item-inset" ng-show="post.confeedback">
+                <span class="input-label">Feedback Score</span>
+                <input type="text" ng-model="post.confeedscore" placeholder="Score"/>
+            </li>                         
+        </ul>
+    </li>
+    <li class="item item-padding"> 
+        <div class="button-bar">
+            <button class="button button-block button-small" ng-click="changePayMode(1)" ng-class="post.paymode==1 ? 'button-positive' : ''">Specify price</button>
+            <button class="button button-block button-small" ng-click="changePayMode(2)" ng-class="post.paymode==2 ? 'button-positive' : ''">Contractor submit bids</button>
+        </div>
+        <input type="hidden" ng-model="post.paymode" />
+    </li>
+    <li class="item item-input" ng-show="post.paymode==1">
+        <span class="input-label">Price per hour: </span>
+        <input type="number" ng-model="post.price" placeholder="0.00"/>
+    </li>
+    <li class="padding">
+        <div class="button-bar">
+            <button class="button button-block button-calm" ng-click="createPost(post)">
+                Create Post
+            </button>
+            <button class="button button-block button-calm" ng-click="postItemModal.hide()">
+                Cancel
+            </button>            
+        </div>
+    </li>
+
+</ul>

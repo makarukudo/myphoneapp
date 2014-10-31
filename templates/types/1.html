@@ -1,0 +1,95 @@
+<ul class="list" ng-controller="PostItemForm">
+    <div ng-show="error.length>5" class="alert assertive-border">{{error}}</div>    
+    <input type="hidden" ng-model="postId" />
+    <li class="item item-divider">Event Description:</li>    
+    <li class="item item-padding">
+        <textarea placeholder="Event Description" ng-model="post.title" ></textarea>
+    </li>
+    <li class="item item-divider">Address: <small ng-show="post.latitude">{{latlng}}</small></li>        
+    <li class="item item-padding">
+        <input type="text" placeholder="Address" ng-model="post.address" ng-blur="getLatLng(post.address)"/>
+        <small ng-show="address" class="note"><i class="icon ion-checkmark calm"></i> {{address}}</small>
+    </li>
+    <li class="item item-divider">Start date:</li>    
+    <li class="item item-padding">
+        <input type="date" placeholder="Start Date" ng-model="post.startdate" />
+    </li>
+    <li class="item item-divider">Invite people: <span ng-show="post.radius>0" class="pull-right">{{post.radius}} mi</span></li>
+    <li class="item">
+        <div class="range range-positive">
+            <input ng-model="post.radius" type="range" name="volume" min="0" max="10" step=".1" value="50" />
+        </div>
+    </li>
+    <li class="item item-divider">Get attendees from:</li>
+    <li class="item">
+        <div class="button-bar">
+            <button class="button button-block button-small button-positive" ng-click="getContacts()">Contact list</button>
+            <button class="button button-block button-small button-positive">Facebook friends</button>
+        </div>
+        <ul class="list" ng-repeat="selcontact in selcontacts">
+            <li class="item item-padding">{{selcontact.displayName}}</li>
+        </ul>
+    </li>
+    <li class="item item-divider">Options:</li>
+    <li class="item item-padding">
+        <ul class="list list-unbox">
+            <li class="item item-checkbox">
+                <label class="checkbox"><input type="checkbox" ng-model="post.attlimit"></label>
+                Set limit of attendees
+            </li>
+            <li class="item item-input item-inset" ng-show="post.attlimit">
+                <span class="input-label" style="padding-left: 45px">Min:</span>
+                <input type="number" placeholder="Min" ng-model="post.attmin"/>
+            </li>
+            <li class="item item-input item-inset" ng-show="post.attlimit">
+                <span class="input-label" style="padding-left: 45px">Max:</span>
+                <input type="number" placeholder="Max" ng-model="post.attmax"/>
+            </li>
+            <li class="item item-checkbox">
+                <label class="checkbox"><input type="checkbox" ng-model="post.attvismap"></label>
+                Visible to non-invites
+            </li>     
+            <li class="item item-checkbox">
+                <label class="checkbox"><input type="checkbox" ng-model="post.attreqinv"></label>
+                Allow non-invites to request invites
+            </li>     
+            <li class="item item-checkbox">
+                <label class="checkbox"><input type="checkbox" ng-model="post.attrefinv"></label>
+                Allow attendees to invite more people
+            </li>   
+            <li class="item item-checkbox">
+                <label class="checkbox"><input type="checkbox" ng-model="post.hasfee"></label>
+                Charge a fee to attend
+            </li>   
+            <li class="item item-input" ng-show="post.hasfee">
+                <span class="input-label">Attendance fee:</span>
+                <input type="text" ng-model="post.fee" placeholder="Fee"/>
+            </li>            
+        </ul>
+    </li>
+    <li class="item item-divider">
+        <a class="icon ion-plus pull-right" ng-click="addItem()" style="cursor: pointer"></a>
+        Request item(s) from attendees:
+    </li>
+    <li class="item item-padding">
+        <div class="row row-item" ng-repeat="item in post.items">
+            <div class="col col-25">
+                <input type="text" placeholder="Quantity" ng-model="item.qty" />
+            </div>
+            <div class="col col-75">
+                <input type="text" placeholder="Description" ng-model="item.desc" />
+            </div>
+        </div>
+    </li>
+    <li class="padding">
+        <div class="button-bar">
+            <button class="button button-block button-calm" ng-click="createPost(post)">
+                Create Post
+            </button>
+            <button class="button button-block button-calm" ng-click="postItemModal.hide()">
+                Cancel
+            </button>            
+        </div>
+
+    </li>
+</ul>

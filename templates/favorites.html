@@ -1,0 +1,13 @@
+<ion-popover-view>
+    <ion-header-bar class="bar-calm">
+        <h1 class="title">Legends</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list favorites">
+            <div ng-repeat="fave in faves" class="item">
+                <span>{{fave.cname}}</span>
+                <span class="pull-right {{fave.color}}"><i class="ion-record"></i></span>
+            </div>
+        </div>
+    </ion-content>
+</ion-popover-view>
